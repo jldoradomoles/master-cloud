@@ -26,6 +26,8 @@ jobs:
 
         - name: Deploy to server
             run: |
-                # Aquí puedes agregar los comandos necesarios para desplegar tu aplicación
-                # Por ejemplo, si usas rsync para copiar archivos a un servidor remoto:
-                rsync -avz --delete-after ./build/ user@server:/path/to/deploy
+                - name: Deploy to GitHub Pages
+                    uses: peaceiris/actions-gh-pages@v3
+                    with:
+                    github_token: ${{ secrets.GITHUB_TOKEN }}
+                    publish_dir: ./build
